@@ -32,6 +32,15 @@ def printlog(s, sep = ": "):
     sys.stdout.flush()
     
 def PostThingsboard( JsDATA, DeviceId ):
+    """
+    performs queries on the Things Board API to be able to post the passed data as a parameter. 
+        1. it requests token access with the publicId
+        2. it requests the device token with access token and the deviceID pass as parameter  
+        3. it posts the data to pass as a parameter with the device token
+        @param dictionary: that contains the name of the data and the data
+               DeviceID: the name of the device on TTN and the device ID on Thingsboard
+
+    """
     printlog("send to ThingsBoard")
     headers_AcessT = {
           'Content-Type': 'application/json',
@@ -60,6 +69,10 @@ def on_connect( client, userdata, flags, rc ):
     printlog( "Connexion MQTT: Statut= " +("OK" if rc==0 else "échec") )
 
 def on_message( client, userdata, message ):
+    """
+    application that processes data when a message is 
+    received and starts the post procedure on ThingsBoard
+    """
     printlog( "Recept message MQTT..." )
     printlog( "Topic : "+ str(message.topic) )
     msg = json.loads(message.payload)
