@@ -2,6 +2,9 @@
 """
 Théo Guiguitant 
 theo.guiguitant@gmail.com
+
+script that from an MQTT client (subscribe to TTN) 
+makes http requests to the Things Boards system API
 """
 
 import paho.mqtt.client as mqtt_client
@@ -21,10 +24,10 @@ client.on_message = on_message
 client.on_connect = on_connect
 #client.on_log = on_log 
 # Connexion broker
+
 client.username_pw_set(username=dPrm['TTN']['appid'], password=dPrm['TTN']['accesskey'] )
 client.connect(host=dPrm['MQTT']['broker'], port=int(dPrm['MQTT']['port']), keepalive=int(dPrm['MQTT']['keep_alive']))
 printlog("Client MQTT connect to TTN")
-printlog("waiting for a communication")
 client.subscribe( "+/devices/+/up" )
 
 # standby loop
