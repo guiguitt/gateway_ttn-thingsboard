@@ -28,7 +28,7 @@ client.on_connect = on_connect
 client.username_pw_set(username=dPrm['TTN']['appid'], password=dPrm['TTN']['accesskey'] )
 client.connect(host=dPrm['MQTT']['broker'], port=int(dPrm['MQTT']['port']), keepalive=int(dPrm['MQTT']['keep_alive']))
 printlog("Client MQTT connect to TTN")
-client.subscribe( "+/devices/+/up" )
+client.subscribe(dPrm['MQTT']['topic'])
 
 # standby loop
 client.loop_forever()
