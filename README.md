@@ -8,9 +8,9 @@ is available to do the same.
 * [Professional Edition-MQTT](https://thingsboard.io/docs/user-guide/integrations/mqtt/) 
 * [Module gateway iot](https://thingsboard.io/docs/iot-gateway/)
 ## Getting Started
-download the zip of the project
+* download the zip of the project
 [https://github.com/guiguitt/GateWay_TTNThingsboard/archive/master.zip]
-or clone on your computer 
+* or clone on your computer 
 [https://github.com/guiguitt/GateWay_TTNThingsboard.git]
 unzip the file 
 ### Python 
