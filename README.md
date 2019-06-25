@@ -17,4 +17,13 @@ https://github.com/guiguitt/GateWay_TTNThingsboard/archive/master.zip
 https://github.com/guiguitt/GateWay_TTNThingsboard.git
 ```
 * unzip the file 
-### Python 
+### Python
+todo ...
+### Commissioning
+####MQTT
+#####BROKER
+for TTN is 
+```
+<region>.thethings.network 
+````
+![alt text](https://raw.githubusercontent.com/guiguitt/GateWay_TTNThingsboard/doc/registration.png)
