@@ -6,4 +6,4 @@ The ThingsBoard Professional Edition  of Things Board allows you to read a Topic
 is available to do the same.
 ## other ways of doing things 
 *[Professional Edition-MQTT](https://thingsboard.io/docs/user-guide/integrations/mqtt/) 
-*[Module gateway iot][https://thingsboard.io/docs/iot-gateway/)
+*[Module gateway iot](https://thingsboard.io/docs/iot-gateway/)
