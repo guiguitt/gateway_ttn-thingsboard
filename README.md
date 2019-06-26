@@ -55,6 +55,49 @@ for TTN is it is included in the application handler
 - THINGS
 7. URL: url of your ThingsBoard
 8. PublicID: ->customers->copy customers ID
+##script installation(In Progress...non-operational)------------------------------------------------------
+DDorch addition 
+Steps 
+- add a user `gateway_ttn` on the server: `sudo adduser gateway_ttn`.
+- clone the current repository in the home of this newly added user.
+- configure the systemctl service by editing the file `/etc/systemd/system/gateway_ttn.service` as root
+
+The content of `/etc/systemd/system/gateway_ttn.service`: 
+
+```
+[Unit]
+Description=Gateway between TTN and Thingsboard
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=gateway_ttn
+ExecStart=/usr/bin/env python3 /home/gateway_ttn/GateWay_TTNThingsboard.py
+
+[Install]
+WantedBy=multi-user.ta
+```
+
+- Start the service: `sudo systemctl start`
+- Check if the service is working properly: ` sudo systemctl status gateway_ttn.service`
+
+```
+gateway_ttn.service - Gateway between TTN and Thingsboard
+   Loaded: loaded (/etc/systemd/system/gateway_ttn.service; disabled; vendor preset: enabled)
+   Active: active (running) since Wed 2019-06-26 11:36:58 CEST; 8ms ago
+ Main PID: 27385 (python3)
+    Tasks: 0 (limit: 4915)
+   CGroup: /system.slice/gateway_ttn.service
+           └─27385 python3 /home/gateway_ttn/GateWay_TTNThingsboard.py
+```
+
+- enable service at startup with command `sudo systemctl enable gateway_ttn.service` failed with message `Failed to enable unit: Invalid argument`
+
+Still searching why it fails...
+
 
   
 
