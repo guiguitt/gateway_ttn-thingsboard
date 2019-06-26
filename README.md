@@ -16,16 +16,45 @@ https://github.com/guiguitt/GateWay_TTNThingsboard/archive/master.zip
 ```
 https://github.com/guiguitt/GateWay_TTNThingsboard.git
 ```
-* unzip the file 
 ### Python
-#Paho-mqtt
+to execute the script that requires the python environment.
+for linux:
+```
+https://docs.python-guide.org/starting/install3/linux/
+```
+for windows: 
+```
+http://winpython.sourceforge.net/
+```
+and 4 module
+* Paho-mqtt
 ```
 pip install paho-mqtt
 ```
+* requests
+```
+pip install requests
+````
+* json
+* datatime
 ### Commissioning
 ####MQTT
-#####BROKER
-for TTN is 
-```
-<region>.thethings.network 
-````
+* BROKER:
+for TTN is it is included in the application handler 
+* topic:<AppID>/devices/<DevID>
+** +/devices/+/up(for messages sent from node 
+** +/devices/+/down(for messages receive by node)
+** +/devices/+/events/activations(communication activate of node)
+** +/devices/+/+(all things of communicate)
+* PORT:We generally use the port 1883
+* KEEP_ALIVE: 45 is good
+* ClientId: turn on your imagnation 
+####TTN
+* App_ID: the Name of your application on TTN(at the overview top  )
+* AccessKey: the access key of your application(at the overview bottom)
+####THINGS
+* URL: url of your ThingsBoard
+* PublicId: customers
+
+  
+
