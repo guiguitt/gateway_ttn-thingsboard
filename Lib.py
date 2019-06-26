@@ -75,7 +75,7 @@ def on_message( client, userdata, message ):
     """
     printlog( "Recept message MQTT..." )
     printlog( "Topic : "+ str(message.topic) )
-    msg = json.loads(message.payload)
+    msg = json.loads(message.payload.decode("utf-8"))
     #printlog("dev_if : " +y["dev_id"])
     #printlog("Latitude: " +y["payload_fields"]["latitude"])    
     #printlog("Longitude: " +y["payload_fields"]["longitude"])    
