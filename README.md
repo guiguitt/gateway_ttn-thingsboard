@@ -55,8 +55,8 @@ for TTN is it is included in the application handler
 - THINGS
 7. URL: url of your ThingsBoard
 8. PublicID: ->customers->copy customers ID
-##script installation(In Progress...non-operational)------------------------------------------------------
-DDorch addition 
+## script installation(In Progress...non-operational)------------------------------------------------------
+- DDorch addition 
 Steps 
 - add a user `gateway_ttn` on the server: `sudo adduser gateway_ttn`.
 - clone the current repository in the home of this newly added user.
