@@ -54,7 +54,7 @@ TTN
 6. AccessKey: the access key of your application (at the overview bottom)
 THINGS
 7. URL: url of your ThingsBoard
-8. PublicId: customers
+8. PublicID: ->customers->copy customers ID
 
   
 
