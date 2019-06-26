@@ -17,6 +17,7 @@ dPrm = getIniParameters("commissioning.ini") #loading of all keys and connection
 
 
 client = mqtt_client.Client( client_id=dPrm['MQTT']['clientid'] ) #launch of the mqtt client
+
 printlog("Client MQTT begin ")
 
 #interrupt function
@@ -26,8 +27,23 @@ client.on_connect = on_connect
 # Connexion broker
 
 client.username_pw_set(username=dPrm['TTN']['appid'], password=dPrm['TTN']['accesskey'] )
-client.connect(host=dPrm['MQTT']['broker'], port=int(dPrm['MQTT']['port']), keepalive=int(dPrm['MQTT']['keep_alive']))
-printlog("Client MQTT connect to TTN")
+while True:
+    try:
+        printlog("connect in progress...")
+        client.connect(host=dPrm['MQTT']['broker'], port=int(dPrm['MQTT']['port']), keepalive=int(dPrm['MQTT']['keep_alive']))
+    except TimeoutError as e:
+        printlog("Timeout: (Probably: not route with the broker)")
+        printlog(str(e))
+        continue
+    except OSError as e:
+        printlog("OSError: (Probably: not permission to open port Mqtt)")
+        printlog(str(e))
+        continue
+    except:
+        continue
+    break
+
+    printlog("Client MQTT is connected with TTN broker")
 client.subscribe(dPrm['MQTT']['topic'])
 
 # standby loop

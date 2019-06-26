@@ -18,7 +18,10 @@ https://github.com/guiguitt/GateWay_TTNThingsboard.git
 ```
 * unzip the file 
 ### Python
-todo ...
+#Paho-mqtt
+```
+pip install paho-mqtt
+```
 ### Commissioning
 ####MQTT
 #####BROKER
@@ -26,4 +29,3 @@ for TTN is
 ```
 <region>.thethings.network 
 ````
-![alt text](https://raw.githubusercontent.com/guiguitt/GateWay_TTNThingsboard/doc/registration.png)

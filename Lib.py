@@ -46,19 +46,69 @@ def PostThingsboard( JsDATA, DeviceId ):
           'Content-Type': 'application/json',
           'Accept': 'application/json',
             }
-    ResponseAcessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AcessT, data=dPrm['THINGS']['publicid'])
-    #printlog("ResponseAcessToken: "+ResponseAcessToken.text)
+    
+    while True:
+        try:
+            printlog("send request to Acess Token")
+            ResponseAcessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AcessT, data=dPrm['THINGS']['publicid'])
+        except ConnectionError as e:
+            printlog("DNS failure, refused connection, etc")
+            printlog(e)
+            continue
+        except HTTPError as e:
+            printlog(e)
+            continue
+        except Timeout as e:
+            print(e)
+            continue
+        break
+    printlog("done")
     AcessToken=eval(ResponseAcessToken.text)['token']
+    
     headers_DeviceT = {
             'Accept': 'application/json',
             'X-Authorization': "Bearer " +AcessToken
             }
-    ResponseDeviceToken = requests.get(dPrm['THINGS']['url']+'/api/device/'+DeviceId+'/credentials', headers=headers_DeviceT)
-    #printlog("ResponseDeviceToken: "+str(ResponseDeviceToken.text))
+    
+    while True:
+        try:
+            printlog("send request to Device token")
+            ResponseDeviceToken = requests.get(dPrm['THINGS']['url']+'/api/device/'+DeviceId+'/credentials', headers=headers_DeviceT)
+        except ConnectionError as e:
+            printlog("DNS failure, refused connection, etc")
+            printlog(e)
+            continue
+        except HTTPError as e:
+            printlog(e)
+            continue
+        except Timeout as e:
+            print(e)
+            continue
+        break
+    printlog("done")
+    
     null = None
     DeviceToken=str(eval(ResponseDeviceToken.text)['credentialsId'])
-    r = requests.post(dPrm['THINGS']['url']+'/api/v1/'+DeviceToken+'/telemetry', json=JsDATA)
-    printlog("request code reponse:"+str(r))
+    
+    
+    
+    while True:
+        try:
+            printlog("send request telemetry" )
+            r = requests.post(dPrm['THINGS']['url']+'/api/v1/'+DeviceToken+'/telemetry', json=JsDATA)
+            printlog("request code reponse:"+str(r))
+        except ConnectionError as e:
+            printlog("DNS failure, refused connection, etc")
+            printlog(e)
+            continue
+        except HTTPError as e:
+            printlog(e)
+            continue
+        except Timeout as e:
+            print(e)
+            continue
+        break
+    printlog("done")
 
 
 def on_log( client, userdata, level, buf ):
