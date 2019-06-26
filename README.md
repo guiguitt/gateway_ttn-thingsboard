@@ -56,8 +56,8 @@ for TTN is it is included in the application handler
 7. URL: url of your ThingsBoard
 8. PublicID: ->customers->copy customers ID
 ## script installation(In Progress...non-operational)------------------------------------------------------
-- DDorch addition 
-Steps 
+## DDorch addition 
+
 - add a user `gateway_ttn` on the server: `sudo adduser gateway_ttn`.
 - clone the current repository in the home of this newly added user.
 - configure the systemctl service by editing the file `/etc/systemd/system/gateway_ttn.service` as root
