@@ -38,23 +38,23 @@ pip install requests
 * json
 * datatime
 ### Commissioning
-####MQTT
-* BROKER:
+MQTT
+1. BROKER:
 for TTN is it is included in the application handler 
-* topic:<AppID>/devices/<DevID>
-** +/devices/+/up(for messages sent from node 
-** +/devices/+/down(for messages receive by node)
-** +/devices/+/events/activations(communication activate of node)
-** +/devices/+/+(all things of communicate)
-* PORT:We generally use the port 1883
-* KEEP_ALIVE: 45 is good
-* ClientId: turn on your imagnation 
-####TTN
-* App_ID: the Name of your application on TTN(at the overview top  )
-* AccessKey: the access key of your application(at the overview bottom)
-####THINGS
-* URL: url of your ThingsBoard
-* PublicId: customers
+	* topic:<AppID>/devices/<DevID>
+	* +/devices/+/up(for messages sent from node 
+	* +/devices/+/down(for messages receive by node)
+	* +/devices/+/events/activations(communication activate of node)
+	* +/devices/+/+(all things of communicate)
+2. PORT:We generally use the port 1883
+3. KEEP_ALIVE: 45 is good
+4. ClientId: turn on your imagnation 
+TTN
+5. App_ID: the Name of your application on TTN(at the overview top  )
+6. AccessKey: the access key of your application(at the overview bottom)
+THINGS
+7. URL: url of your ThingsBoard
+8. PublicId: customers
 
   
 
