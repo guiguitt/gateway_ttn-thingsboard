@@ -43,8 +43,7 @@ while True:
         continue
     break
 
-    printlog("3/3 - Client MQTT is connected with TTN broker")
 client.subscribe(dPrm['MQTT']['topic'])
-
+printlog("3/3 - Client MQTT is connected with TTN broker")
 # standby loop
 client.loop_forever()
