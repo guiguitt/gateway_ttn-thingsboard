@@ -47,14 +47,13 @@ def PostThingsboard( JsDATA, DeviceId ):
           'Accept': 'application/json',
             }
     
-    while True:
-        try:
-            printlog("1/9 - send request to Acess Token")
-            ResponseAcessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AcessT, data=dPrm['THINGS']['publicid'])
-            printlog("2/9 - Request response: " + ResponseAcessToken.text)
-        except requests.exceptions.RequestException as e:
-            printlog("Request response: " + ResponseAcessToken.text)
-            continue
+    try:
+        printlog("1/9 - send request to Acess Token")
+        ResponseAcessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AcessT, data=dPrm['THINGS']['publicid'])
+        printlog("2/9 - Request response: " + ResponseAcessToken.text)
+    except Exception as e:
+        printlog("Request response: " + ResponseAcessToken.text)
+        return
         
     printlog("3/9 - done")
     AcessToken=eval(ResponseAcessToken.text)['token']
@@ -64,14 +63,13 @@ def PostThingsboard( JsDATA, DeviceId ):
             'X-Authorization': "Bearer " +AcessToken
             }
     
-    while True:
-        try:
-            printlog("4/9 - send request to Device token")
-            ResponseDeviceToken = requests.get(dPrm['THINGS']['url']+'/api/device/'+DeviceId+'/credentials', headers=headers_DeviceT)
-            printlog("5/9 - Request response: " + ResponseAcessToken.text)
-        except requests.exceptions.RequestException as e:
-            printlog("Request response: " + ResponseAcessToken.text)
-            continue
+    try:
+        printlog("4/9 - send request to Device token")
+        ResponseDeviceToken = requests.get(dPrm['THINGS']['url']+'/api/device/'+DeviceId+'/credentials', headers=headers_DeviceT)
+        printlog("5/9 - Request response: " + ResponseAcessToken.text)
+    except Exception as e:
+        printlog("Request response: " + ResponseAcessToken.text)
+        return
     printlog("6/9 - done")
     
     null = None
@@ -79,15 +77,13 @@ def PostThingsboard( JsDATA, DeviceId ):
     
     
     
-    while True:
-        try:
-            printlog("7/9 - send request telemetry" )
-            r = requests.post(dPrm['THINGS']['url']+'/api/v1/'+DeviceToken+'/telemetry', json=JsDATA)
-            printlog("8/9 - request code reponse:"+str(r.text))
-        except requests.exceptions.RequestException as e:
-            printlog("Request response: " + r.text)
-            continue
-        
+    try:
+        printlog("7/9 - send request telemetry" )
+        r = requests.post(dPrm['THINGS']['url']+'/api/v1/'+DeviceToken+'/telemetry', json=JsDATA)
+        printlog("8/9 - request code reponse:"+str(r.text))
+    except Exception as e:
+        printlog("Request response: " + r.text)
+        return  
     printlog("9/9 - done")
 
 
