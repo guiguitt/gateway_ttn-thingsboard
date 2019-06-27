@@ -29,11 +29,11 @@ http://winpython.sourceforge.net/
 and 4 module
 * Paho-mqtt
 ```
-pip install paho-mqtt
+pip3 install paho-mqtt
 ```
 * requests
 ```
-pip install requests
+pip3 install requests
 ````
 * json
 * datatime
@@ -60,7 +60,16 @@ for TTN is it is included in the application handler
 
 - add a user `gateway_ttn` on the server: `sudo adduser gateway_ttn`.
 - clone the current repository in the home of this newly added user.
+```
+su gateway_ttn
+cd
+git clone https://github.com/guiguitt/GateWay_TTNThingsboard.git
+exit
+```
 - configure the systemctl service by editing the file `/etc/systemd/system/gateway_ttn.service` as root
+```
+sudo nano /etc/systemd/system/gateway_ttn.service
+```
 
 The content of `/etc/systemd/system/gateway_ttn.service`: 
 
