@@ -49,20 +49,14 @@ def PostThingsboard( JsDATA, DeviceId ):
     
     while True:
         try:
-            printlog("1/7 - send request to Acess Token")
+            printlog("1/9 - send request to Acess Token")
             ResponseAcessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AcessT, data=dPrm['THINGS']['publicid'])
-        except ConnectionError as e:
-            printlog("DNS failure, refused connection, etc")
-            printlog(e)
+            printlog("2/9 - Request response: " + ResponseAcessToken.text)
+        except requests.exceptions.RequestException as e:
+            printlog("Request response: " + ResponseAcessToken.text)
             continue
-        except HTTPError as e:
-            printlog(e)
-            continue
-        except Timeout as e:
-            print(e)
-            continue
-        break
-    printlog("2/7 - done")
+        
+    printlog("3/9 - done")
     AcessToken=eval(ResponseAcessToken.text)['token']
     
     headers_DeviceT = {
@@ -72,20 +66,13 @@ def PostThingsboard( JsDATA, DeviceId ):
     
     while True:
         try:
-            printlog("3/7 - send request to Device token")
+            printlog("4/9 - send request to Device token")
             ResponseDeviceToken = requests.get(dPrm['THINGS']['url']+'/api/device/'+DeviceId+'/credentials', headers=headers_DeviceT)
-        except ConnectionError as e:
-            printlog("DNS failure, refused connection, etc")
-            printlog(e)
+            printlog("5/9 - Request response: " + ResponseAcessToken.text)
+        except requests.exceptions.RequestException as e:
+            printlog("Request response: " + ResponseAcessToken.text)
             continue
-        except HTTPError as e:
-            printlog(e)
-            continue
-        except Timeout as e:
-            print(e)
-            continue
-        break
-    printlog("4/7 - done")
+    printlog("6/9 - done")
     
     null = None
     DeviceToken=str(eval(ResponseDeviceToken.text)['credentialsId'])
@@ -94,21 +81,14 @@ def PostThingsboard( JsDATA, DeviceId ):
     
     while True:
         try:
-            printlog("5/7 - send request telemetry" )
+            printlog("7/9 - send request telemetry" )
             r = requests.post(dPrm['THINGS']['url']+'/api/v1/'+DeviceToken+'/telemetry', json=JsDATA)
-            printlog("6/7 - request code reponse:"+str(r))
-        except ConnectionError as e:
-            printlog("DNS failure, refused connection, etc")
-            printlog(e)
+            printlog("8/9 - request code reponse:"+str(r.text))
+        except requests.exceptions.RequestException as e:
+            printlog("Request response: " + r.text)
             continue
-        except HTTPError as e:
-            printlog(e)
-            continue
-        except Timeout as e:
-            print(e)
-            continue
-        break
-    printlog("7/7 - done")
+        
+    printlog("9/9 - done")
 
 
 def on_log( client, userdata, level, buf ):

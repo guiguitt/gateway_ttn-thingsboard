@@ -14,7 +14,10 @@ printlog("Script Gateway TTN to Thingsboard has begin")
 
 
 dPrm = getIniParameters("commissioning.ini") #loading of all keys and connection parameters
-
+for key, value in dPrm.items():
+    for key2,value in dPrm[key].items():
+            if value=="":
+                sys.exit("Error message: commissioning incomplete")
 
 client = mqtt_client.Client( client_id=dPrm['MQTT']['clientid'] ) #launch of the mqtt client
 
@@ -31,6 +34,7 @@ while True:
     try:
         printlog("2/3 - connect in progress...")
         client.connect(host=dPrm['MQTT']['broker'], port=int(dPrm['MQTT']['port']), keepalive=int(dPrm['MQTT']['keep_alive']))
+        break
     except TimeoutError as e:
         printlog("Timeout: (Probably: not route with the broker)")
         printlog(str(e))
@@ -39,9 +43,7 @@ while True:
         printlog("OSError: (Probably: not permission to open port Mqtt)")
         printlog(str(e))
         continue
-    except:
-        continue
-    break
+    
 
 client.subscribe(dPrm['MQTT']['topic'])
 printlog("3/3 - Client MQTT is connected with TTN broker")
