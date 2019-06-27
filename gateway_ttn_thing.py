@@ -8,7 +8,7 @@ makes http requests to the Things Boards system API
 """
 
 import paho.mqtt.client as mqtt_client
-from Lib import *
+from lib import *
 
 printlog("Script Gateway TTN to Thingsboard has begin")
 
