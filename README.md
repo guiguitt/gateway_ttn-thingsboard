@@ -1,4 +1,4 @@
-# GateWay_TTNThingsboard
+# gateWay_ttn-thingsboard
 This script allows you to receive messages published on MQTT topic, 
 select data, and publish this data via HTTP request.
 the script is developed to work between The Things Network and Things Board. 
@@ -10,11 +10,11 @@ is available to do the same.
 ## Getting Started
 * download the zip of the project
 ```
-https://github.com/guiguitt/GateWay_TTNThingsboard/archive/master.zip
+https://github.com/guiguitt/gateway_ttn-thingsboard/archive/master.zip
 ```
 * or clone on your computer 
 ```
-https://github.com/guiguitt/GateWay_TTNThingsboard.git
+git clone https://github.com/guiguitt/gateway_ttn-thingsboard.git
 ```
 ### Python
 to execute the script that requires the python environment.
@@ -63,7 +63,7 @@ for TTN is it is included in the application handler
 ```
 su gateway_ttn
 cd
-git clone https://github.com/guiguitt/GateWay_TTNThingsboard.git
+git clone https://github.com/guiguitt/gateway_ttn-thingsboard.git
 exit
 ```
 - configure the systemctl service by editing the file `/etc/systemd/system/gateway_ttn.service` as root
@@ -84,7 +84,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=gateway_ttn
-ExecStart=/usr/bin/env python3 /home/gateway_ttn/GateWay_TTNThingsboard.py
+ExecStart=/usr/bin/env python3 /home/gateway_ttn/gateway_ttn-thingsboard.py
 
 [Install]
 WantedBy=multi-user.ta
@@ -100,7 +100,7 @@ gateway_ttn.service - Gateway between TTN and Thingsboard
  Main PID: 27385 (python3)
     Tasks: 0 (limit: 4915)
    CGroup: /system.slice/gateway_ttn.service
-           └─27385 python3 /home/gateway_ttn/GateWay_TTNThingsboard.py
+           └─27385 python3 /home/gateway_ttn/gateway_ttn-thingsboardpy
 ```
 
 - enable service at startup with command `sudo systemctl enable gateway_ttn.service` failed with message `Failed to enable unit: Invalid argument`
