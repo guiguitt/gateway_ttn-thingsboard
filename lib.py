@@ -49,7 +49,7 @@ def PostThingsboard( JsDATA, DeviceId ):
     
     while True:
         try:
-            printlog("1send request to Acess Token")
+            printlog("1/7 - send request to Acess Token")
             ResponseAcessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AcessT, data=dPrm['THINGS']['publicid'])
         except ConnectionError as e:
             printlog("DNS failure, refused connection, etc")
