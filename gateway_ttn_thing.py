@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Théo Guiguitant 
+Théo Guiguitant  
 theo.guiguitant@gmail.com
 
 script that from an MQTT client (subscribe to TTN) 
@@ -8,16 +8,19 @@ makes http requests to the Things Boards system API
 """
 
 import paho.mqtt.client as mqtt_client
-from lib import *
+from library import *
 
 printlog("Script Gateway TTN to Thingsboard has begin")
 
 
-dPrm = getIniParameters("commissioning.ini") #loading of all keys and connection parameters
+dPrm = getIniParameters('commissioning.ini') #loading of all keys and connection parameters
+
 for key, value in dPrm.items():
     for key2,value in dPrm[key].items():
             if value=="":
                 sys.exit("Error message: commissioning incomplete")
+
+printlog("charge of commissioning")
 
 client = mqtt_client.Client( client_id=dPrm['MQTT']['clientid'] ) #launch of the mqtt client
 
