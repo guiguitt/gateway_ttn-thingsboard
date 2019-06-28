@@ -103,9 +103,8 @@ gateway_ttn.service - Gateway between TTN and Thingsboard
            └─27385 python3 /home/gateway_ttn/gateway_ttn-thingsboardpy
 ```
 
-- enable service at startup with command `sudo systemctl enable gateway_ttn.service` failed with message `Failed to enable unit: Invalid argument`
-
-Still searching why it fails...
+- enable service at startup with command 
+````sudo systemctl enable gateway_ttn.service```
 
 
   
