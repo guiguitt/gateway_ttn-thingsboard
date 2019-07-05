@@ -79,7 +79,7 @@ def PostThingsboard( JsDATA, DeviceId):
 
     printlog("7/9 - send request telemetry" )
     r = requests.post(dPrm['THINGS']['url']+'/api/v1/'+DeviceToken+'/telemetry', json=JsDATA)
-    printlog("8/9 - request code reponse:"+str(r.text))
+    printlog("8/9 - request code reponse:"+ str(r.text))
     if 'status' in ResponseDeviceToken.text:
         printlog( r.text)
     printlog("9/9 - ***done***") 

@@ -55,7 +55,7 @@ for TTN is it is included in the application handler
 - THINGS
 7. URL: url of your ThingsBoard
 8. PublicID: ->customers->copy customers ID
-## script installation(In Progress...non-operational)------------------------------------------------------
+## script installation(service methode)
 ## DDorch addition 
 
 - add a user `gateway_ttn` on the server: `sudo adduser gateway_ttn`.
@@ -87,7 +87,7 @@ User=gateway_ttn
 ExecStart=/usr/bin/env python3 /home/gateway_ttn/gateway_ttn-thingsboard.py
 
 [Install]
-WantedBy=multi-user.ta
+WantedBy=multi-user.target
 ```
 
 - Start the service: `sudo systemctl start`
@@ -105,6 +105,14 @@ gateway_ttn.service - Gateway between TTN and Thingsboard
 
 - enable service at startup with command 
 ````sudo systemctl enable gateway_ttn.service```
+## Use of the system 
+For the gateway to work correctly,
+the Device ID on TTN must match the corresponding device on the things board.
+- created a new device on Things board.
+- copy your device ID.
+- creates a new device on TTN with this device ID and the EUI device of the node. 
+- then enter the EUI application and the appKey in the node program. 
+in description in TTN it is recommended to place the device name and a link to the thingsboard
 
 
   
