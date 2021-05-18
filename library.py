@@ -46,7 +46,7 @@ def PostThingsboard( JsDATA, DeviceId):
     'accept': "application/json"
     }
     printlog("1/6 - Send request to Access Token")
-
+    #print(dPrm['THINGS']['url']+'/api/auth/login/public')
     try:
         ResponseAccessToken = requests.post(dPrm['THINGS']['url']+'/api/auth/login/public', headers=headers_AccessT, data='{"publicId":"'+ dPrm['THINGS']['publicid']+'"}')
     except requests.exceptions.RequestException as e:
@@ -119,5 +119,7 @@ def on_message( client, userdata, message):
     #printlog("Latitude: " +y["payload_fields"]["latitude"])
     #printlog("Longitude: " +y["payload_fields"]["longitude"])
     #printlog("detection: %s" +y["payload_fields"]["detection"])
-    printlog("data: "+str(msg["payload_fields"]))
-    PostThingsboard(msg["payload_fields"], msg['dev_id'])
+    
+    #printlog("data: "+str(msg["payload_fields"]))
+    printlog("data: "+str(msg["uplink_message"]["decoded_payload"]))
+    PostThingsboard(msg["uplink_message"]["decoded_payload"], msg["end_device_ids"]["device_id"])
